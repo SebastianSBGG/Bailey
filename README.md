@@ -1,126 +1,126 @@
-# <div align='center'>Baileys - Typescript/Javascript WhatsApp Web API</div>
+# <div align='center'>Baileys - API de WhatsApp Web para Typescript/Javascript</div>
 
 <div align="center"><img src="https://iili.io/2Zpjtlp.jpg"></div>
 
-## Important Note
+## Nota Importante
 
-The original repository was initially removed by its creator and subsequently taken over by [WhiskeySockets](https://github.com/WhiskeySockets). Building upon this foundation, I have implemented several enhancements and introduced new features that were not present in the original repository. These improvements aim to elevate functionality and provide a more robust and versatile experience.
+El repositorio original fue inicialmente eliminado por su creador y posteriormente fue retomado por [WhiskeySockets](https://github.com/WhiskeySockets). Basándome en esta fundación, he implementado varias mejoras e introducido nuevas características que no estaban presentes en el repositorio original. Estas mejoras buscan elevar la funcionalidad y proporcionar una experiencia más robusta y versátil.
 
-## Install
+## Instalación
 
-Install in package.json:
+Instalar en package.json:
 ```json
 "dependencies": {
     "baileys": "github:nstar-y/bail"
 }
 ```
-or install in terminal:
+o instalar en terminal:
 ```
 npm install baileys@github:nstar-y/bail
 ```
 
-Then import the default function in your code:
+Luego importa la función por defecto en tu código:
 ```ts 
-// type esm
+// tipo esm
 import makeWASocket from 'baileys'
 ```
 
 ```js
-// type cjs
+// tipo cjs
 const { default: makeWASocket } = require("baileys")
 ```
 
-## Added Features and Improvements
-Here are some of the features and improvements I have added:
+## Características y Mejoras Añadidas
+Aquí están algunas de las características y mejoras que he añadido:
 
-- **Support for Sending Messages to Channels**: You can now easily send messages to channels.
+- **Soporte para Envío de Mensajes a Canales**: Ahora puedes enviar mensajes a canales fácilmente.
 
-- **Support for Button Messages and Interactive Messages**: Added the ability to send messages with buttons and interactive messages.
+- **Soporte para Mensajes con Botones y Mensajes Interactivos**: Se añadió la capacidad de enviar mensajes con botones y mensajes interactivos.
 
-- **AI Message Icon**: Added customizable AI icon settings for messages
+- **Icono de Mensaje IA**: Se añadieron configuraciones personalizables de iconos IA para mensajes.
 
-- **Profile Picture Settings**: Allows users to upload profile pictures in their original size without cropping, ensuring better quality and visual presentation.
+- **Configuraciones de Foto de Perfil**: Permite a los usuarios subir fotos de perfil en su tamaño original sin recortar, asegurando mejor calidad y presentación visual.
 
-- **Custom Pairing Code**: Users can now create and customize pairing codes as they wish, enhancing convenience and security when connecting devices.
+- **Código de Emparejamiento Personalizado**: Los usuarios ahora pueden crear y personalizar códigos de emparejamiento como deseen, mejorando la conveniencia y seguridad al conectar dispositivos.
 
-- **Libsignal Fixes**: Cleaned up logs for a cleaner and more informative output.
+- **Correcciones de Libsignal**: Se limpiaron los logs para una salida más limpia e informativa.
 
-More features and improvements will be added in the future.
+Más características y mejoras serán añadidas en el futuro.
 
-## Feature Examples
+## Ejemplos de Características
 
-### NEWSLETTER
+### BOLETÍN/NEWSLETTER
 
-- **To get info newsletter**
+- **Para obtener información del boletín**
 ``` ts
 const metadata = await sock.newsletterMetadata("invite", "xxxxx")
-// or
+// o
 const metadata = await sock.newsletterMetadata("jid", "abcd@newsletter")
 console.log(metadata)
 ```
-- **To update the description of a newsletter**
+- **Para actualizar la descripción de un boletín**
 ``` ts
-await sock.newsletterUpdateDescription("abcd@newsletter", "New Description")
+await sock.newsletterUpdateDescription("abcd@newsletter", "Nueva Descripción")
 ```
-- **To update the name of a newsletter**
+- **Para actualizar el nombre de un boletín**
 ``` ts
-await sock.newsletterUpdateName("abcd@newsletter", "New Name")
+await sock.newsletterUpdateName("abcd@newsletter", "Nuevo Nombre")
 ```  
-- **To update the profile picture of a newsletter**
+- **Para actualizar la foto de perfil de un boletín**
 ``` ts
 await sock.newsletterUpdatePicture("abcd@newsletter", buffer)
 ```
-- **To remove the profile picture of a newsletter**
+- **Para remover la foto de perfil de un boletín**
 ``` ts
 await sock.newsletterRemovePicture("abcd@newsletter")
 ```
-- **To mute notifications for a newsletter**
-``` ts
-await sock.newsletterUnmute("abcd@newsletter")
-```
-- **To mute notifications for a newsletter**
+- **Para silenciar notificaciones de un boletín**
 ``` ts
 await sock.newsletterMute("abcd@newsletter")
 ```
-- **To create a newsletter**
+- **Para activar notificaciones de un boletín**
 ``` ts
-const metadata = await sock.newsletterCreate("Newsletter Name", "Newsletter Description")
+await sock.newsletterUnmute("abcd@newsletter")
+```
+- **Para crear un boletín**
+``` ts
+const metadata = await sock.newsletterCreate("Nombre del Boletín", "Descripción del Boletín")
 console.log(metadata)
 ```
-- **To delete a newsletter**
+- **Para eliminar un boletín**
 ``` ts
 await sock.newsletterDelete("abcd@newsletter")
 ```
-- **To follow a newsletter**
+- **Para seguir un boletín**
 ``` ts
 await sock.newsletterFollow("abcd@newsletter")
 ```
-- **To unfollow a newsletter**
+- **Para dejar de seguir un boletín**
 ``` ts
 await sock.newsletterUnfollow("abcd@newsletter")
 ```
-- **To send reaction**
+- **Para enviar reacción**
 ``` ts
-// jid, id message & emoticon
-// way to get the ID is to copy the message url from channel
-// Example: [ https://whatsapp.com/channel/xxxxx/175 ]
-// The last number of the URL is the ID
+// jid, id del mensaje y emoticón
+// la forma de obtener el ID es copiar la URL del mensaje del canal
+// Ejemplo: [ https://whatsapp.com/channel/xxxxx/175 ]
+// El último número de la URL es el ID
 const id = "175"
 await sock.newsletterReactMessage("abcd@newsletter", id, "🥳")
 ```
 
-### BUTTON MESSAGE & INTERACTIVE MESSAGE
+### MENSAJES CON BOTONES Y MENSAJES INTERACTIVOS
 
-- **To send button with text**
+- **Para enviar botón con texto**
 ```ts
 const buttons = [
-  { buttonId: 'id1', buttonText: { displayText: 'Button 1' }, type: 1 },
-  { buttonId: 'id2', buttonText: { displayText: 'Button 2' }, type: 1 }
+  { buttonId: 'id1', buttonText: { displayText: 'Botón 1' }, type: 1 },
+  { buttonId: 'id2', buttonText: { displayText: 'Botón 2' }, type: 1 }
 ]
 
 const buttonMessage = {
-    text: "Hi it's button message",
-    footer: 'Hello World',
+    text: "Hola, es un mensaje con botones",
+    footer: 'Hola Mundo',
     buttons,
     headerType: 1,
     viewOnce: true
@@ -128,17 +128,17 @@ const buttonMessage = {
 
 await sock.sendMessage(id, buttonMessage, { quoted: null })
 ```
-- **To send button with image**
+- **Para enviar botón con imagen**
 ```ts
 const buttons = [
-  { buttonId: 'id1', buttonText: { displayText: 'Button 1' }, type: 1 },
-  { buttonId: 'id2', buttonText: { displayText: 'Button 2' }, type: 1 }
+  { buttonId: 'id1', buttonText: { displayText: 'Botón 1' }, type: 1 },
+  { buttonId: 'id2', buttonText: { displayText: 'Botón 2' }, type: 1 }
 ]
 
 const buttonMessage = {
-    image: { url: "https://example.com/abcd.jpg" }, // image: buffer or path
-    caption: "Hi it's button message with image",
-    footer: 'Hello World',
+    image: { url: "https://example.com/abcd.jpg" }, // image: buffer o ruta
+    caption: "Hola, es un mensaje con botones e imagen",
+    footer: 'Hola Mundo',
     buttons,
     headerType: 1,
     viewOnce: true
@@ -147,17 +147,17 @@ const buttonMessage = {
 await sock.sendMessage(id, buttonMessage, { quoted: null })
 
 ```
-- **To send button with video**
+- **Para enviar botón con video**
 ```ts
 const buttons = [
-  { buttonId: 'id1', buttonText: { displayText: 'Button 1' }, type: 1 },
-  { buttonId: 'id2', buttonText: { displayText: 'Button 2' }, type: 1 }
+  { buttonId: 'id1', buttonText: { displayText: 'Botón 1' }, type: 1 },
+  { buttonId: 'id2', buttonText: { displayText: 'Botón 2' }, type: 1 }
 ]
 
 const buttonMessage = {
-    video: { url: "https://example.com/abcd.mp4" }, // video: buffer or path
-    caption: "Hi it's button message with video",
-    footer: 'Hello World',
+    video: { url: "https://example.com/abcd.mp4" }, // video: buffer o ruta
+    caption: "Hola, es un mensaje con botones y video",
+    footer: 'Hola Mundo',
     buttons,
     headerType: 1,
     viewOnce: true
@@ -166,27 +166,27 @@ const buttonMessage = {
 await sock.sendMessage(id, buttonMessage, { quoted: null })
 ```
 
-- **To send interactive message**
+- **Para enviar mensaje interactivo**
 ```ts
 const interactiveButtons = [
      {
         name: "quick_reply",
         buttonParamsJson: JSON.stringify({
-             display_text: "Quick Reply",
+             display_text: "Respuesta Rápida",
              id: "ID"
         })
      },
      {
         name: "cta_url",
         buttonParamsJson: JSON.stringify({
-             display_text: "Tap Here!",
+             display_text: "¡Toca Aquí!",
              url: "https://www.example.com/"
         })
      },
      {
         name: "cta_copy",
         buttonParamsJson: JSON.stringify({
-             display_text: "Copy Code",
+             display_text: "Copiar Código",
              id: "12345",
              copy_code: "12345"
         })
@@ -194,35 +194,35 @@ const interactiveButtons = [
 ]
 
 const interactiveMessage = {
-    text: "Hello World!",
-    title: "this is the title",
-    footer: "this is the footer",
+    text: "¡Hola Mundo!",
+    title: "este es el título",
+    footer: "este es el pie de página",
     interactiveButtons
 }
 
 await sock.sendMessage(id, interactiveMessage, { quoted: null })
 ```
-- **To send interactive message with image**
+- **Para enviar mensaje interactivo con imagen**
 ```ts
 const interactiveButtons = [
      {
         name: "quick_reply",
         buttonParamsJson: JSON.stringify({
-             display_text: "Quick Reply",
+             display_text: "Respuesta Rápida",
              id: "ID"
         })
      },
      {
         name: "cta_url",
         buttonParamsJson: JSON.stringify({
-             display_text: "Tap Here!",
+             display_text: "¡Toca Aquí!",
              url: "https://www.example.com/"
         })
      },
      {
         name: "cta_copy",
         buttonParamsJson: JSON.stringify({
-             display_text: "Copy Code",
+             display_text: "Copiar Código",
              id: "12345",
              copy_code: "12345"
         })
@@ -230,36 +230,36 @@ const interactiveButtons = [
 ]
 
 const interactiveMessage = {
-    image: { url: "https://example.com/abcd.jpg" }, // image: buffer or path
-    caption: "this is the caption",
-    title: "this is the title",
-    footer: "this is the footer",
+    image: { url: "https://example.com/abcd.jpg" }, // image: buffer o ruta
+    caption: "esta es la descripción",
+    title: "este es el título",
+    footer: "este es el pie de página",
     interactiveButtons
 }
 
 await sock.sendMessage(id, interactiveMessage, { quoted: null })
 ```
-- **To send interactive message with video**
+- **Para enviar mensaje interactivo con video**
 ```ts
 const interactiveButtons = [
      {
         name: "quick_reply",
         buttonParamsJson: JSON.stringify({
-             display_text: "Quick Reply",
+             display_text: "Respuesta Rápida",
              id: "ID"
         })
      },
      {
         name: "cta_url",
         buttonParamsJson: JSON.stringify({
-             display_text: "Tap Here!",
+             display_text: "¡Toca Aquí!",
              url: "https://www.example.com/"
         })
      },
      {
         name: "cta_copy",
         buttonParamsJson: JSON.stringify({
-             display_text: "Copy Code",
+             display_text: "Copiar Código",
              id: "12345",
              copy_code: "12345"
         })
@@ -267,36 +267,36 @@ const interactiveButtons = [
 ]
 
 const interactiveMessage = {
-    video: { url: "https://example.com/abcd.mp4" }, // video: buffer or path
-    caption: "this is the caption",
-    title: "this is the title",
-    footer: "this is the footer",
+    video: { url: "https://example.com/abcd.mp4" }, // video: buffer o ruta
+    caption: "esta es la descripción",
+    title: "este es el título",
+    footer: "este es el pie de página",
     interactiveButtons
 }
 
 await sock.sendMessage(id, interactiveMessage, { quoted: null })
 ```
 
-### AI Icon
+### Icono IA
 
 ```ts
-// just add "ai: true" function to sendMessage
-await sock.sendMessage(id, { text: "Hello Wold", ai: true })
+// solo añade "ai: true" a la función sendMessage
+await sock.sendMessage(id, { text: "Hola Mundo", ai: true })
 ```
 
-### Custom Code Pairing
+### Código de Emparejamiento Personalizado
 
 ```ts
 if(usePairingCode && !sock.authState.creds.registered) {
-    const phoneNumber = await question('Please enter your mobile phone number:\n')
-    const custom = "NSTRCODE" // must be 8 digits, can be letters or numbers
+    const phoneNumber = await question('Por favor ingresa tu número de teléfono móvil:\n')
+    const custom = "NSTRCODE" // debe ser de 8 dígitos, pueden ser letras o números
     const code = await sock.requestPairingCode(phoneNumber, custom)
-    console.log(`Pairing code: ${code?.match(/.{1,4}/g)?.join('-') || code}`)
+    console.log(`Código de emparejamiento: ${code?.match(/.{1,4}/g)?.join('-') || code}`)
 }
 ```
 
-## Reporting Issues
-If you encounter any issues while using this repository or any part of it, please feel free to open a [new issue](https://github.com/nstar-y/Bail/issues) here.
+## Reportar Problemas
+Si encuentras algún problema mientras usas este repositorio o cualquier parte del mismo, por favor siéntete libre de abrir un [nuevo issue](https://github.com/nstar-y/Bail/issues) aquí.
 
-## Notes
-Everything other than the modifications mentioned above remains the same as the original repository. You can check out the original repository at [WhiskeySockets](https://github.com/WhiskeySockets/Baileys)
+## Notas
+Todo lo demás aparte de las modificaciones mencionadas anteriormente permanece igual que en el repositorio original. Puedes revisar el repositorio original en [WhiskeySockets](https://github.com/WhiskeySockets/Baileys)
